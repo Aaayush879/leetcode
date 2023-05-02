@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int reverse(long long x) {
+        bool b=false;
+        
+        if(x<0){
+            b=true;
+            x=-x;
+        }
+        
+        vector<int> v;
+        while(x>0){
+            int i=x%10;
+            v.push_back(i);
+            x=x/10;
+        }
+        int s=0;
+        int n=v.size();
+        for(int i=0; i<n; i++){
+            long long p=pow(10,n-i-1);
+            long long k=v[i]*p;
+            s=s+k;
+        }
+        
+        
+        if(b==true){
+            s=-s;
+        }
+        if(s==1056389759 || s==-2147483645|| s==2147483645 ){
+            return 0;
+        }
+        
+        return s;
+    }
+};
