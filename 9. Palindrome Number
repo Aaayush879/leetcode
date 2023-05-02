@@ -1,0 +1,32 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x<0){
+            return false;
+        }
+        if(x<10){
+            return true;
+        }
+        else{
+            int c=0;
+            vector<int> v;
+            while(x>0){
+                int i=x%10;
+                v.push_back(i);
+                c=c+1;
+                x=x/10;
+            }
+            int k=0;
+            int p=c/2;
+            for(int i=0; i<p; i++){
+                if(v[i]==v[c-i-1]){
+                    k=k+1;
+                }
+            }
+            if(k==c/2){
+                return true;
+            }
+        }
+        return false;
+    }
+};
