@@ -1,0 +1,54 @@
+class Solution {
+public:
+    long long divide(long long dividend1, long long  divisor1) {
+        long long c=0;
+        long long dividend;
+        long long divisor;
+        bool p;
+        if(dividend1==0){
+            return 0;
+        }
+        
+        
+        if((dividend1>0) && (divisor1>0)){
+            divisor=divisor1;
+            dividend=dividend1;
+            p=false;
+        }
+        else if((dividend1<0) && (divisor1<0)){
+            divisor=-divisor1;
+            dividend=-dividend1;
+            p=false;
+        }
+        if((dividend1>0) && (divisor1<0)){
+            divisor=-divisor1;
+            dividend=dividend1;
+            p=true;
+        }
+        if((dividend1<0) && (divisor1>0)){
+            divisor=divisor1;
+            dividend=-dividend1;
+            p=true;
+        }
+        if(divisor==1){
+            if(p==true){
+                return -dividend;
+            }
+            if(dividend>=2147483647){
+                return 2147483647;
+            }
+            return dividend;
+            
+        }
+        
+        
+        while(dividend>=divisor){
+            dividend=dividend-divisor;
+            c=c+1;
+        }
+        if(p){
+            return -c;
+        }
+        return c;
+    }
+};
