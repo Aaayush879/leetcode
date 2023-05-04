@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        vector<int> v;
+        while(true){
+            while(n>0){
+                int i=n%10;
+                v.push_back(i);
+                n=n/10;
+            }
+            long long s=0;
+            int p=v.size();
+            for(int i=0; i<p; i++ ){
+                s=s+pow(v[i],2);
+            }
+            if(s==1){
+                return true;
+            }
+            else{
+                n=s;
+            }
+            if(p<2){
+                return false;
+            }
+            while(p--){
+                v.pop_back();
+            }
+        }
+        return false;
+    }
+};
