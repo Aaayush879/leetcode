@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        map<int , int > m;
+        int n=nums.size();
+        for(int i=0; i<n; i++){
+            m[nums[i]]++;
+        }
+        int k=n/3;
+        set<int> s;
+        for(auto i :m){
+            if( i.second>k){
+                s.insert(i.first);
+            }
+        }
+        set<int>::iterator itr;
+        vector<int> v;
+        for (itr = s.begin();itr != s.end(); itr++)
+        {
+            v.push_back(*itr);
+        }
+        return v;
+        
+    }
+};
