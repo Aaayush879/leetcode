@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool isValid(int i, int j,int m,int n){
+        if(i>=0 && i<n && j>=0 && j<m){
+            return true;
+        }
+        return false;
+    }
+    void recur(int i,int j, int m, int n, vector<vector<int>>& img,int c,int k){
+        img[i][j]=c;
+        if(isValid(i+1,j,m,n)==true){
+            if(img[i+1][j]==k){
+                recur(i+1,j,m,n,img,c,k);
+            }
+        }
+        if(isValid(i-1,j,m,n)==true){
+            if(img[i-1][j]==k){
+                recur(i-1,j,m,n,img,c,k);
+            }
+        }
+        if(isValid(i,j+1,m,n)==true){
+            if(img[i][j+1]==k){
+                recur(i,j+1,m,n,img,c,k);
+            }
+        }
+        if(isValid(i,j-1,m,n)==true){
+            if(img[i][j-1]==k){
+                recur(i,j-1,m,n,img,c,k);
+            }
+        }
+    }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int m=image[0].size();
+        int n=image.size();
+        if(color==image[sr][sc]){
+            return image;
+        }
+        recur(sr,sc,m,n,image,color,image[sr][sc]);
+        return image;
+        
+    }
+};
